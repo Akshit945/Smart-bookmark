@@ -1,36 +1,65 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Smart Bookmark App
 
-## Getting Started
+A premium, real-time bookmark manager built with Next.js, Supabase, and Tailwind CSS.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Google Authentication**: Secure sign-in with Google via Supabase Auth.
+- **Liked Bookmarks**: Mark your favorite links with a heart icon.
+- **Smart Filtering**: Toggle between "All Bookmarks" and "Favorites".
+- **Real-time Sync**: Changes update instantly across devices.
+- **Strict Monochrome UI**: A distraction-free, black-and-white aesthetic designed for focus.
+- **Auto Favicons**: Automatically fetches favicons for your bookmarked URLs.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Tech Stack
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Framework**: Next.js 14+ (App Router)
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **Backend/Auth/DB**: Supabase
+- **Icons**: Lucide React
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Setup & Local Development
 
-## Learn More
+1.  **Clone the repository**:
+    ```bash
+    git clone <repo-url>
+    cd <repo-name>
+    ```
 
-To learn more about Next.js, take a look at the following resources:
+2.  **Install dependencies**:
+    ```bash
+    npm install
+    ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+3.  **Environment Variables**:
+    Create a `.env.local` file in the root directory with your Supabase credentials:
+    ```env
+    NEXT_PUBLIC_SUPABASE_URL=your-project-url
+    NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
+    ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+4.  **Database Setup**:
+    Run the SQL script found in `supabase/schema.sql` in your Supabase SQL Editor to create the table and policies.
 
-## Deploy on Vercel
+5.  **Run the development server**:
+    ```bash
+    npm run dev
+    ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Deployment for Vercel
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1.  Push your code to a GitHub repository.
+2.  Import the project into Vercel.
+3.  Add the `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_ANON_KEY` to the Vercel Environment Variables.
+4.  Deploy!
+
+## Challenges & Solutions
+
+- **Real-time Implementation**: 
+  - *Challenge*: Ensuring the list updates without page refresh upon adding/deleting/liking.
+  - *Solution*: precise state management with the `BookmarkList` using Supabase's Realtime subscription.
+
+- **Private Data Security**:
+  - *Challenge*: Preventing users from seeing others' bookmarks.
+  - *Solution*: Implemented stringent Row Level Security (RLS) policies in Supabase to enforce ownership at the database level.
