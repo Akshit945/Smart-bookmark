@@ -2,6 +2,8 @@
 
 A premium, real-time bookmark manager built with Next.js, Supabase, and Tailwind CSS.
 
+[**Live Demo**](https://askhit945-smart-bookmark.vercel.app)
+
 ## Features
 
 - **Google Authentication**: Secure sign-in with Google via Supabase Auth.

@@ -7,6 +7,7 @@ const inter = Inter({ subsets: ['latin'] })
 export const metadata: Metadata = {
     title: 'Smart Bookmark App',
     description: 'A premium bookmark manager tailored for you.',
+    metadataBase: new URL('https://askhit945-smart-bookmark.vercel.app'),
 }
 
 import { ThemeProvider } from '@/components/theme-provider'
